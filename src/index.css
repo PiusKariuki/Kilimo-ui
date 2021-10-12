@@ -1,13 +1,12 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .signup-input {
+    @apply border-2 rounded-lg shadow outline-none w-2/3 px-1 py-1 focus:ring focus:border-blue-300;
+  }
+  .btn-submit {
+    @apply rounded-lg bg-pink-400 text-white w-20 p-2 focus:bg-indigo-900 hover:bg-pink-700;
+  }
 }
