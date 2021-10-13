@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Landing from './App/Modules/Landing/views/Landing';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import ConfigureStore from './App/Common/store/ConfigureStore';
 
+const store = ConfigureStore();
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
     <Landing />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
