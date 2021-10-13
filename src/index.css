@@ -7,6 +7,6 @@
     @apply border-2 rounded-lg shadow outline-none w-2/3 px-1 py-1 focus:ring focus:border-blue-300;
   }
   .btn-submit {
-    @apply rounded-lg bg-pink-400 text-white w-20 p-2 focus:bg-indigo-900 hover:bg-pink-700;
+    @apply rounded-lg bg-pink-400 text-white w-20 p-2 focus:bg-pink-900;
   }
 }

@@ -1,24 +1,28 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import useSignUp from "../hooks/useSignUp";
 import { connect } from "react-redux";
 import { Login } from "../store/ActionCreators";
 
 interface Props {
   login: (email: string, password: string) => string;
-  errmess: string
+  errmess: string;
 }
 
-const SignUp: React.FunctionComponent<{ login: Props["login"], errmess: string }> = ({
-  login,errmess
-}): JSX.Element => {
+const SignUp: React.FunctionComponent<{
+  login: Props["login"];
+  errmess: string;
+}> = ({ login, errmess }): JSX.Element => {
   /*.........hook calls.......*/
   const [email, pass, handleChange] = useSignUp();
-    const [err, setErr] = useState(errmess);
+  const [err, setErr] = useState(errmess);
+  useEffect(()=> {
+    setErr(errmess)
+  },[errmess]);
   /*.............handlers...................*/
   const handleSubmit = (e: any) => {
     e.preventDefault();
     login(email, pass);
-    setErr(errmess);
+    setErr("");
   };
 
   return (
