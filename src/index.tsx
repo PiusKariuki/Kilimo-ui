@@ -5,12 +5,14 @@ import Landing from './App/Modules/Landing/views/Landing';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import ConfigureStore from './App/Common/store/ConfigureStore';
+import Kilimo from './App/Modules/Kilimo/views/Kilimo';
+
 
 const store = ConfigureStore();
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
-    <Landing />
+    <Kilimo />
   </React.StrictMode>
   </Provider>,
   document.getElementById('root')

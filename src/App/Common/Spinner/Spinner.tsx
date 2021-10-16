@@ -4,14 +4,16 @@ interface Props {
   loading: boolean;
 }
 
-const Spinner: React.FC<{ loading: Props["loading"] }> = ({ loading }) => {
+const Spinner: React.FC<{ loading: Props["loading"] }> = ({
+  loading,
+}): JSX.Element => {
   return (
-    <div className="bg-rose-600">
+    <div className="">
       {loading ? (
-        <button type="button" className="bg-rose-600 " disabled>
-          <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"></svg>
-          processing
-        </button>
+        <>
+        <div className="animate-spin rounded-full h-7 w-7 border-b-2 border-gray-900"></div>
+        <p className="font-extrabold">Loading...</p>
+        </>
       ) : null}
     </div>
   );

@@ -9,4 +9,7 @@
   .btn-submit {
     @apply rounded-lg bg-pink-400 text-white w-20 p-2 focus:bg-pink-900;
   }
+  .route-btn {
+    @apply rounded-lg bg-amber-400 text-white w-20 mx-3 focus:bg-amber-700;
+  }
 }

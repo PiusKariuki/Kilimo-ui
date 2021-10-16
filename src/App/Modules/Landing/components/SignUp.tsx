@@ -2,22 +2,25 @@ import React, { useState, useEffect } from "react";
 import useSignUp from "../hooks/useSignUp";
 import { connect } from "react-redux";
 import { Login } from "../store/ActionCreators";
+import Spinner from "../../../Common/Spinner/Spinner";
 
 interface Props {
   login: (email: string, password: string) => string;
   errmess: string;
+  loading: boolean;
 }
 
 const SignUp: React.FunctionComponent<{
   login: Props["login"];
-  errmess: string;
-}> = ({ login, errmess }): JSX.Element => {
+  errmess: Props["errmess"];
+  loading: Props["loading"];
+}> = ({ login, errmess, loading }): JSX.Element => {
   /*.........hook calls.......*/
   const [email, pass, handleChange] = useSignUp();
   const [err, setErr] = useState(errmess);
-  useEffect(()=> {
-    setErr(errmess)
-  },[errmess]);
+  useEffect(() => {
+    setErr(errmess);
+  }, [errmess]);
   /*.............handlers...................*/
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -56,6 +59,10 @@ const SignUp: React.FunctionComponent<{
         <div className="flex justify-center mt-6 mb-3">
           <h5 className="text-red-700 text-center font-extrabold">{err}</h5>
         </div>
+        {/* ................spinner................... */}
+        <div className="flex justify-center mt-3">
+          <Spinner loading={loading} />
+        </div>
         {/* ............btn.............. */}
         <div className="flex justify-center mt-12 mb-4">
           <button
@@ -78,6 +85,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 const mapStateToProps = (state: any) => {
   return {
     errmess: state?.User?.errmess,
+    loading: state?.User?.loading,
   };
 };
 
