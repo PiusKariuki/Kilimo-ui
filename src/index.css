@@ -12,4 +12,19 @@
   .route-btn {
     @apply rounded-lg bg-amber-400 text-white w-20 mx-3 focus:bg-amber-700;
   }
+  .bg-lime {
+    @apply border-lime-400;
+  }
+  .bg {
+    @apply bg-lime-500 dark:bg-gray-600;
+  }
+  .bg-cards {
+    @apply bg-lime-400 dark:bg-gray-500;
+  }
+  .text-color {
+    @apply text-black dark:text-gray-300;
+  }
+  .icon {
+    @apply h-8;
+  }
 }

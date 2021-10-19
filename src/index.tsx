@@ -12,7 +12,9 @@ const store = ConfigureStore();
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>
+    <div className="bg">
     <Kilimo />
+    </div>
   </React.StrictMode>
   </Provider>,
   document.getElementById('root')

@@ -13,13 +13,21 @@ module.exports = {
         white: colors.white,
         amber: colors.amber,
         rose: colors.rose,
-        brown: colors.brown,
+        lime: colors.lime,
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
       fontFamily: {
         sans: ['"Nunito"', "sans-serif"],
+      },
+      height: {
+        "40v": "40vh",
+        "60v": "60vh",
+        "88v": "88vh",
+        "90v": "90vh",
+        "95v": "95vh",
+        "100v": "100vh",
       },
     },
   },
