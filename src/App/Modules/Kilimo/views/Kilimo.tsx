@@ -53,7 +53,7 @@ const Kilimo: React.FC = (): JSX.Element => {
       </nav>
       {/* .................................sidebar end.......................... */}
       {/* ...............................content div.............................*/}
-      <div className="flex  flex-col h-screen w-full justify-between ">
+      <div className="flex flex-col h-screen w-full justify-between ">
         <div className="md:ml-20 mt-12">
           <Content />
         </div>
