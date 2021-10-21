@@ -9,7 +9,7 @@ const Content = () => {
         className="text-center italic mt-10 text-color
            text-4xl md:text-5xl font-black justify-around  md:tracking-wide xl:tracking-widest"
       >
-        <span className="text-gray-100 dark:text-lime-400">KILIMO</span> Farm
+        <span className="text-lime-400">KILIMO</span> Farm
         Buddy
       </h2>
 

@@ -21,7 +21,7 @@ const useSignUp = () => {
     };
 
 
-    return [email,pass, handleChange] as const;
+    return [email,pass, handleChange,setEmail,setPass] as const;
 }
 
 export default useSignUp;

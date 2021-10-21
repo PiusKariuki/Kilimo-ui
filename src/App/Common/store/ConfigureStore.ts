@@ -31,6 +31,7 @@ const ConfigureStore = () => {
   return store;
 };
 
+
 export const getState = () => {
   return ConfigureStore().getState();
 };

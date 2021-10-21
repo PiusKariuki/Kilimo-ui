@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import useFetch from "../../../Common/hooks/useFetch";
 import { MDBDataTableV5 } from "mdbreact";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import useTable from "../../../Common/hooks/useTable";
 import useAnimals from "../hooks/useAnimals";
 
@@ -10,11 +10,12 @@ interface Props {
   actions: [{ name: string; handler: Function }];
 }
 
-const Animals: React.FC<{ department: Props["dept"] }> = ({ department }) => {
-  /*........................custom hook calls......................*/
+const Animals: React.FC<{ department: Props["dept"] }> = () => {
+  /*........................ hook calls......................*/
   const { data, err, res, getObject } = useFetch();
   const { columns } = useAnimals();
   const { populate } = useTable();
+  const department = useSelector<any>((state) => state?.User?.department);
 
   /*...............................................................................................
                     -Action buttons for the animals  datatable.
@@ -56,7 +57,4 @@ const Animals: React.FC<{ department: Props["dept"] }> = ({ department }) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  department: state?.User?.department,
-});
-export default connect(mapStateToProps, null)(Animals);
+export default Animals;

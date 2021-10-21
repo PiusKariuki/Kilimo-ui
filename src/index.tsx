@@ -1,24 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import './index.css';
-import Landing from './App/Modules/Landing/views/Landing';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import ConfigureStore from './App/Common/store/ConfigureStore';
-import Kilimo from './App/Modules/Kilimo/views/Kilimo';
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import ConfigureStore from "./App/Common/store/ConfigureStore";
+import App from "./App";
 
 const store = ConfigureStore();
 ReactDOM.render(
   <Provider store={store}>
-  <React.StrictMode>
-    <div className="bg">
-    <Kilimo />
-    {/* <Landing /> */}
-    </div>
-  </React.StrictMode>
+    <BrowserRouter>
+      <React.StrictMode>
+        <div className="bg">
+          <App />
+        </div>
+      </React.StrictMode>
+    </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

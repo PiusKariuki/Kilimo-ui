@@ -15,7 +15,7 @@ export const loadState = () => {
 };
 
 // saves state to local storage
-export const saveState = (state) => {
+export const saveState = (state:any) => {
   // redux recommends state be serializeable
   try {
     const serializedState = JSON.stringify(state);

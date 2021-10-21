@@ -8,13 +8,15 @@ interface Props {
   login: (email: string, password: string) => string;
   errmess: string;
   loading: boolean;
+  tkn: string;
 }
 
 const SignUp: React.FunctionComponent<{
   login: Props["login"];
   errmess: Props["errmess"];
   loading: Props["loading"];
-}> = ({ login, errmess, loading }): JSX.Element => {
+  tkn: Props["tkn"];
+}> = ({ login, errmess, loading,tkn }): JSX.Element => {
   /*.........hook calls.......*/
   const [email, pass, handleChange] = useSignUp();
   const [err, setErr] = useState(errmess);
@@ -86,6 +88,7 @@ const mapStateToProps = (state: any) => {
   return {
     errmess: state?.User?.errmess,
     loading: state?.User?.loading,
+    tkn: state?.User?.tkn,
   };
 };
 
