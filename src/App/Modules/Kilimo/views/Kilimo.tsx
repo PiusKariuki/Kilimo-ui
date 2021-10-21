@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Footer from "../../../Common/Components/Footer";
 import Sidebar from "../../../Common/Components/Sidebar";
 import useDarkMode from "../../../Common/hooks/useDarkMode";
-import Content from "../components/Content";
+import { Route, Switch, Redirect,} from "react-router-dom";
 import kilimoRoutes from "../routes/Routes";
 
 
@@ -35,10 +35,17 @@ const Kilimo: React.FC = (): JSX.Element => {
       </div>
       {/* .................................sidebar end.......................... */}
       {/* ...............................content div.............................*/}
-      <div className="flex flex-col h-screen w-full justify-between ">
-        <div className="md:ml-20 mt-12">
-          <Content />
-        </div>
+      <div className="flex flex-col h-screen w-full justify-between ">  
+          <Switch>
+            {kilimoRoutes.map((prop: any, key: any) => (
+              <Route
+                path={prop.layout + prop.path}
+                component={prop.component}
+                key={key}
+              />
+            ))}
+            <Redirect from="/" to="/kilimo/dashboard" />
+          </Switch>
         <div className="md:ml-20">
           <Footer />
         </div>

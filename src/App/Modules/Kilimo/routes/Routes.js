@@ -1,11 +1,18 @@
-import Kilimo from "../views/Kilimo";
 import Animals from "../../Animals/views/Animals";
+import Dashboard from "../../Dashboard/views/Dashboard";
 
 /*...............................icons and assets.......................*/
-const dashIcon = process.env.PUBLIC_URL + "/img/icons/dash.png";
-const animalIcon = process.env.PUBLIC_URL + "/img/icons/animals.png";
+const dashIcon = process.env.PUBLIC_URL + "/img/dash.png";
+const animalIcon = process.env.PUBLIC_URL + "/img/animals.png";
 
 const kilimoRoutes = [
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    icon: dashIcon,
+    component: Dashboard,
+    layout: "/kilimo",
+  },
   {
     path: "/animals",
     name: "Animals",
@@ -13,13 +20,7 @@ const kilimoRoutes = [
     component: Animals,
     layout: "/kilimo",
   },
-  {
-    path: "/kilimo",
-    name: "Dashboard",
-    icon: dashIcon,
-    component: Kilimo,
-    layout: "/kilimo",
-  },
+
 ];
 
 export default kilimoRoutes;

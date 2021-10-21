@@ -1,9 +1,9 @@
 import React from "react";
 import Cards from "../../../Common/Components/Cards";
 
-const Content = () => {
+const Dashboard = () => {
   return (
-    <div className="flex flex-col md:w-full">
+    <div className="md:ml-12">
       {/* ...................heading */}
       <h2
         className="text-center italic mt-10 text-color
@@ -33,4 +33,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default Dashboard;
