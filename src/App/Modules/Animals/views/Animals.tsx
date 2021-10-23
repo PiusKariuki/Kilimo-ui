@@ -1,6 +1,6 @@
-import React, {  useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import DataTable, {createTheme} from "react-data-table-component";
 import useFetch from "../../../Common/hooks/useFetch";
-import { MDBDataTableV5 } from "mdbreact";
 import { useSelector } from "react-redux";
 import useTable from "../../../Common/hooks/useTable";
 import useAnimals from "../hooks/useAnimals";
@@ -8,13 +8,34 @@ import useAnimals from "../hooks/useAnimals";
 interface Props {
   dept: "dairies" | "beefs" | "layers" | "pigs" | "all";
   actions: [{ name: string; handler: Function }];
+  color: "light" | "dark"
 }
+
+
+
+createTheme("dark", {
+  font: {
+    fontWeight: "bold",
+    fontSize: "5rem"
+  },
+  text: {
+    fontWeight: "bold",
+    primary: "#32cd32",
+    secondary: "inherit",
+  },
+  background: {
+    default: "inherit",
+  },
+});
 
 const Animals: React.FC<{ department: Props["dept"] }> = () => {
   /*........................ hook calls......................*/
-  const { data, err, res, getObject } = useFetch();
+  const { data, getObject } = useFetch();
   const { columns } = useAnimals();
   const { populate } = useTable();
+
+  
+  
   const department = useSelector<any>((state) => state?.User?.department);
 
   /*...............................................................................................
@@ -22,9 +43,11 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
                     -These values will be passed to the  useTable hook.
   ...............................................................................................*/
   const actions: Props["actions"] = [
-    { name: "UPDATE", handler: getObject(`/animals/${department}`, "GET", {}) },
+    {
+      name: "UPDATE",
+      handler: (e:string) => getObject(`/animals/${department}/${e}`, "PUT", {}),
+    },
   ];
-
   /*..............................................................................................
                     -Fetch function.
                     -calls the common axios function to get animals on  mount
@@ -32,26 +55,26 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
   useEffect(() => {
     getObject(`/animals/${department}`, "GET", {});
   }, []);
-
   /*..............................................................................................
                       -Adds action buttons and handlers to the table dynamically
                       -calls the common populate fn in useTable
   ................................................................................................*/
   useEffect(() => {
     populate(data, actions);
-  }, [data]);
+  }, []);
   /*..............................datatable columns and rows.....*/
-  const animals = { columns, rows: data };
+
   return (
-    <div className="flex flex-col">
-      <MDBDataTableV5
-        hover
+    <div className="flex flex-col flex-nowrap justify-center mt-20 md:mx-44">
+      <DataTable
+        columns={columns}
+        data={populate(data, actions)}
+        pagination
         responsive
-        striped
-        bordered
-        entries={7}
-        btn
-        data={animals}
+        title="Animals"
+        theme="dark"
+        fixedHeader
+        fixedHeaderScrollHeight="450px"
       />
     </div>
   );

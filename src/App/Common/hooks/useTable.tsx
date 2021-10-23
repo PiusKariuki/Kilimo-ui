@@ -8,11 +8,11 @@ interface Props {
 
 const useTable = () => {
   const populate = (data: Props["data"], actions: Props["actions"]) =>
-    data.map((obj) =>
+    data.map((obj:any) =>
       Object.assign(obj, {
         actions: actions.map(
           (action, key): JSX.Element => (
-            <button key={key}  onClick={(e) => action.handler(e)}>
+            <button key={key}  value={obj._id} onClick={(e) => action.handler(e.currentTarget.value)} className="btn-submit">
               {action.name}
             </button>
           )

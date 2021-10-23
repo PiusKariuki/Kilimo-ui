@@ -1,7 +1,9 @@
 import React from "react";
 
 const UpdateDialog = () => {
-  return <div></div>;
+  return <div className="hidden">
+    
+  </div>;
 };
 
 export default UpdateDialog;

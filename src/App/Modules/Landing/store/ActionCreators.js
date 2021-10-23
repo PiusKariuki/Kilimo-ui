@@ -11,7 +11,7 @@ export const Login = (email, password) => (dispatch) => {
     .post("/login", userInfo)
     .then(
       (res) => {
-        dispatch(loggedIn(res.data.token, res.data.email));
+        dispatch(loggedIn(res.data.token, res.data.email,res.data.department));
       },
       (err) => dispatch(logFailed(err?.response?.data))
     )
@@ -20,10 +20,11 @@ export const Login = (email, password) => (dispatch) => {
     });
 };
 
-export const loggedIn = (tkn, email) => ({
+export const loggedIn = (tkn, email,department) => ({
   type: ActionTypes.LOGGED_IN,
   payload: tkn,
   email,
+  department
 });
 
 export const logFailed = (errors) => ({

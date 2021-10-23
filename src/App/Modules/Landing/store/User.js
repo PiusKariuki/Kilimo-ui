@@ -6,6 +6,7 @@ export const User = (
     tkn: null,
     errmess: null,
     loading: false,
+    department: null
   },
   action
 ) => {
@@ -17,6 +18,7 @@ export const User = (
         tkn: action.payload,
         loading: false,
         email: action.email,
+        department: action.department,
       };
 
     case ActionTypes.LOG_FAILED:
@@ -33,6 +35,7 @@ export const User = (
         tkn: null,
         loading: false,
         email: null,
+        department: null
       };
 
     case ActionTypes.LOADING:

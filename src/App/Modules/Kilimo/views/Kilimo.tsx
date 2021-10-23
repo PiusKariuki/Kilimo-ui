@@ -10,7 +10,8 @@ const lightIcon = process.env.PUBLIC_URL + "/img/light.png";
 const hamIcon = process.env.PUBLIC_URL + "/img/ham.png";
 
 const Kilimo: React.FC = (): JSX.Element => {
-  const { colorTheme, setTheme } = useDarkMode();
+  const { colorTheme, setTheme} = useDarkMode();
+
 
   const [hidden, setHidden] = useState(false);
 
@@ -31,11 +32,11 @@ const Kilimo: React.FC = (): JSX.Element => {
 
       {/* .................sidebar................... /*/}
       <div className="">
-        <Sidebar hidden={hidden} routes={kilimoRoutes} />
+        <Sidebar hidden={hidden} routes={kilimoRoutes} setHidden={setHidden}/>
       </div>
       {/* .................................sidebar end.......................... */}
       {/* ...............................content div.............................*/}
-      <div className="flex flex-col h-screen w-full justify-between ">  
+      <div className="flex flex-col h-screen w-full justify-between">  
           <Switch>
             {kilimoRoutes.map((prop: any, key: any) => (
               <Route
@@ -46,7 +47,7 @@ const Kilimo: React.FC = (): JSX.Element => {
             ))}
             <Redirect from="/" to="/kilimo/dashboard" />
           </Switch>
-        <div className="md:ml-20">
+        <div className="md:ml-20 border-2 borders">
           <Footer />
         </div>
       </div>
