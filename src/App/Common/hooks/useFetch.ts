@@ -24,7 +24,9 @@ const useFetch = () => {
           .put(route, info)
           .then(
             (res) => setRes("Update was successful!!!"),
-            (err) => setErr(err?.response?.message)
+            (err) => {
+              setErr(err?.response?.message)
+            }
           )
           .catch((err) => setErr(err?.response?.message));
   };

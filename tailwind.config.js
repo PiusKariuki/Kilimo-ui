@@ -19,7 +19,7 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
       fontFamily: {
-        sans: ['"Nunito"', "sans-serif"],
+        sans: ['"Zen Kurenaido"', "sans-serif"],
       },
       height: {
         "40v": "40vh",

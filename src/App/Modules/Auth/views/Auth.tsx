@@ -3,7 +3,7 @@ import SignUp from "../components/SignUp";
 
 const iconPath = process.env.PUBLIC_URL + "/img/";
 
-const Landing: React.FC = (): JSX.Element => {
+const Auth: React.FC = (): JSX.Element => {
   return (
     <div
       className="flex flex-col h-screen  md:w-full   bg-no-repeat bg-cover bg-center"
@@ -35,4 +35,4 @@ const Landing: React.FC = (): JSX.Element => {
   );
 };
 
-export default Landing;
+export default Auth;

@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 // reducer imports
-import { User } from "../../Modules/Landing/store/User";
+import { User } from "../../Modules/Auth/store/User";
 
 // local storage import with bearer  token and user info
 import { saveState, loadState } from "./LocalStorage";

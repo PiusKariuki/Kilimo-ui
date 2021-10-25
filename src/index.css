@@ -3,28 +3,49 @@
 @tailwind utilities;
 
 @layer components {
-  .signup-input {
-    @apply border-2 rounded-lg shadow outline-none w-2/3 px-1 py-1 focus:ring focus:border-blue-300;
-  }
+  /* ...........................buttons.......................... */
   .btn-submit {
-    @apply rounded-lg bg-pink-400 text-white w-20 p-2 focus:bg-pink-900;
+    @apply rounded-lg bg-blue-400 text-white w-20 p-2 focus:bg-pink-900;
   }
   .route-btn {
     @apply rounded-lg bg-amber-400 text-white w-20 mx-3 focus:bg-amber-700;
   }
-  .borders {
-    @apply border-gray-200 dark:border-gray-900 ;
+  .action-btn {
+    @apply rounded-lg w-auto h-auto bg-pink-700 text-white p-2 mx-2 focus:bg-pink-900 hover:bg-purple-700;
   }
+  /* ..........................inputs............................ */
+  .signup-input {
+    @apply border-2 rounded-lg shadow outline-none w-2/3 px-1 py-1 focus:ring focus:border-blue-300;
+  }
+  .input {
+    @apply md:w-96 ring-2 ring-black ring-inset px-3 rounded-lg h-10;
+  }
+  /* ............................text........................... */
+
+  .text-color {
+    @apply text-gray-900 dark:text-gray-300;
+  }
+  /* .............................borders.......................... */
+
+  .borders {
+    @apply border-gray-200 dark:border-gray-900;
+  }
+
+  /* ..............................backgrounds...................... */
   .bg {
     @apply bg-white dark:bg-gray-600;
   }
   .bg-cards {
     @apply bg-white dark:bg-gray-500;
   }
-  .text-color {
-    @apply text-black dark:text-gray-300;
-  }
+  /* ................................icons and images............................. */
   .icon {
     @apply h-8;
+  }
+  .hZPdHb {
+    @apply bg-white dark:bg-gray-600;
+  }
+  .rdt_Table {
+    @apply border-0 border-gray-300;
   }
 }
