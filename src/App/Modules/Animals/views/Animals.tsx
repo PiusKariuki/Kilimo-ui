@@ -59,37 +59,39 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
   ................................................................................................*/
   useEffect(() => {
     getObject(`/animals/${department}`, "GET", {});
-  },[department,getObject]);
+  }, [department, getObject]);
   /*..............................................................................................
                       -Adds action buttons and handlers to the table dynamically
                       -calls the common populate fn in useTable
   ................................................................................................*/
   useEffect(() => {
     populate(data, actions);
-  },[data,populate]);
+  }, [data, populate]);
   /*..............................datatable columns and rows.....*/
 
   return (
-    <div className="flex flex-col flex-nowrap justify-center mt-20 md:mx-32">
+    <div className="flex flex-col flex-nowrap h-screen mt-6">
       <UpdateDialog
         open={open}
         department={department}
         setOpen={setOpen}
         target={target}
       />
-      <DataTable
-        columns={columns}
-        customStyles={customStyles}
-        data={populate(data, actions)}
-        pagination
-        responsive
-        title="Animals"
-        theme="dark"
-        fixedHeader
-        fixedHeaderScrollHeight="450px"
-        actions="Refresh"
-        pointerOnHover
-      />
+      <div className="mx-12">
+        <DataTable
+          columns={columns}
+          customStyles={customStyles}
+          data={populate(data, actions)}
+          pagination
+          responsive
+          title="Animals"
+          theme="dark"
+          fixedHeader
+          fixedHeaderScrollHeight="450px"
+          actions="Refresh"
+          pointerOnHover
+        />
+      </div>
     </div>
   );
 };

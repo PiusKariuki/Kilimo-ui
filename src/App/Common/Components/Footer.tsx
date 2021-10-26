@@ -7,7 +7,7 @@ const nodeIcon = process.env.PUBLIC_URL + "/img/node.png";
 
 const Footer: React.FC = () => {
   return (
-    <div className="flex flex-col shadow-2xl bg-cards py-8">
+    <div className="flex flex-col shadow-2xl bg-cards py-8 border">
       <p className="font-semibold text-color text-3xl text-center mb-6">
         Built using...
       </p>

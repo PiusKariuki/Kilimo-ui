@@ -5,6 +5,9 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        xs: { min: "200px", max: "350px" },
+      },
       colors: {
         teal: colors.teal,
         pink: colors.pink,
@@ -15,19 +18,8 @@ module.exports = {
         rose: colors.rose,
         lime: colors.lime,
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      },
       fontFamily: {
         sans: ['"Zen Kurenaido"', "sans-serif"],
-      },
-      height: {
-        "40v": "40vh",
-        "60v": "60vh",
-        "88v": "88vh",
-        "90v": "90vh",
-        "95v": "95vh",
-        "100v": "100vh",
       },
     },
   },

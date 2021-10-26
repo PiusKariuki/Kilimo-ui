@@ -2,18 +2,26 @@ import React from "react";
 import Cards from "../../../Common/Components/Cards";
 const chicken = process.env.PUBLIC_URL + "/img/chicken.jpg";
 
-const taskTxt=["View your tasks of the day"];
-const animalTxt=["Quick animal identification","Record animal weight", "Record products daily or weekly"];
-const chatTXT = ["Deliver urgent information to vets and managers", "keep in touch with the foreman"];
-
-
+const taskTxt = ["View your tasks of the day"];
+const animalTxt = [
+  "Quick animal identification",
+  "Record animal weight,eggs and milk",
+];
+const chatTXT = [
+  "Deliver urgent information to vets and managers",
+  "keep in touch with the foreman",
+];
 
 const Dashboard = () => {
+  const taskRoute = "/kilimo/tasks";
+  const animalRoute = "/kilimo/animals";
+  const chatRoute = "/kilimo/chat";
+
   return (
     <div className="mt-28">
       {/* ...................HERO SECTION............. */}
-      <div className="flex flex-col md:flex-row  justify-center mb-32">
-        <div className="w-full mb-8 md:w-1/5">
+      <div className="flex flex-col md:flex-row  justify-center mb-32 xs:mx-4 md:mx-6 lg:mx-32">
+        <div className="flex flex-col flex-nowrap w-full mb-8 lg:mr-8">
           <p className="font-black text-7xl mb-6 text-center text-color">
             Livestock farming simplified
           </p>
@@ -25,19 +33,21 @@ const Dashboard = () => {
             <button className="action-btn ">Get started</button>
           </div>
         </div>
-        <div className="mx-12 md:w-1/2 shadow-lg">
+        <div className="flex  sm:mx-12 lg:mx-auto  shadow-lg">
           <img src={chicken} alt="" />
         </div>
       </div>
 
- 
       {/* ...................cards................ */}
-      <p className="font-bold text-6xl mx-6 md:text-8xl text-left text-color md:mx-52 -mb-6">Features</p>
+      <p className="font-bold text-6xl mx-6 lg:text-8xl text-left text-color lg:mx-52 -mb-6">
+        Features
+      </p>
       <div className="flex flex-col justify-around mt-4">
-        <Cards text={taskTxt} imgUrl="tasks.png" />
-        <Cards text={animalTxt} imgUrl="milk.jpg" />
-        <Cards text={chatTXT} imgUrl="chat.jpg" />
+        <Cards text={taskTxt} imgUrl="tasks.png" route={taskRoute} />
+        <Cards text={animalTxt} imgUrl="milk.jpg" route={animalRoute} />
+        <Cards text={chatTXT} imgUrl="chat.jpg" route={chatRoute} />
       </div>
+
     </div>
   );
 };

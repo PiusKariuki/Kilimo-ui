@@ -11,7 +11,7 @@ const Kilimo: React.FC = (): JSX.Element => {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <div className="fixed bottom-20 left-0 z-50">
         <button onClick={() => setTheme(colorTheme)}>
           <img src={lightIcon} alt="" className="h-10" />
@@ -30,9 +30,7 @@ const Kilimo: React.FC = (): JSX.Element => {
           <Redirect from="/" to="/kilimo/dashboard" />
         </Switch>
       </div>
-      <div className="">
-          <Footer />
-        </div>
+
 
     </div>
   );
