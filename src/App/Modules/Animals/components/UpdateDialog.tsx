@@ -2,7 +2,6 @@ import React from "react";
 import useFetch from "../../../Common/hooks/useFetch";
 import useAnimals from "../hooks/useAnimals";
 
-
 interface Props {
   department: any;
   open: boolean;
@@ -16,10 +15,10 @@ const UpdateDialog: React.FC<{
   open: Props["open"];
   setOpen: Props["setOpen"];
   target: Props["target"];
-}> = ({ department, open, setOpen, target}) => {
-  const {  updateObject, handleChange } = useAnimals();
-  const {  getObject } = useFetch();
-  
+}> = ({ department, open, setOpen, target }) => {
+  const { updateObject, handleChange, handleClose, weight, eggs, milk, err } =
+    useAnimals();
+  const { getObject, mongoErr, setMongoErr, status, setStatus } = useFetch();
   
 
   return (
@@ -35,7 +34,7 @@ const UpdateDialog: React.FC<{
         className="justify-center border-4 borders  px-24 pt-2 
       pb-14 bg rounded-2xl shadow-2xl"
       >
-        <h1 className="font-semibold text-center text-lg my-16">
+        <h1 className="font-semibold err-text my-16">
           Update animal details for:{" "}
           <span className="font-extrabold text-2xl text-lime-400 italic">
             {target.id}
@@ -43,55 +42,77 @@ const UpdateDialog: React.FC<{
         </h1>
         <form>
           {/* ................PRODUCTS IE DAIRIES AND LAYERS................................ */}
-          { target.innerHTML==="Milk"  ? (
-            <div className="justify-center flex my-6">
+          {target.innerHTML === "Milk" ? (
+            <div className="justify-center flex-col flex my-6">
               <input
-                type="milk"
+                type="number"
                 placeholder="Milk today"
                 className="input"
                 id="milk"
-                // value
+                value={milk}
                 onChange={handleChange}
               />
+              <p className="err-text">{err}</p>
             </div>
           ) : null}
-          {target.innerHTML==="Eggs" ? (
-            <div className="justify-center flex my-6">
+          {target.innerHTML === "Eggs" ? (
+            <div className="justify-center flex-col flex my-6">
               <input
                 type="eggs"
                 placeholder="Eggs this week"
                 className="input"
                 id="eggs"
-                // value
+                value={eggs}
                 onChange={handleChange}
               />
+              <p className="err-text">{err}</p>
             </div>
           ) : null}
           {/* ................weekly weight................................ */}
-          {target.innerHTML==="Weight"? 
-          <div className="justify-center flex mb-16">
-            <input
-              type="weight"
-              placeholder="Weight"
-              className="input"
-              id="weight"
-              // value
-              onChange={handleChange}
-            />
-          </div>: null}
+          {target.innerHTML === "weight" ? (
+            <div className="justify-center flex-col flex mb-16">
+              <input
+                type="weight"
+                placeholder="Weight"
+                className="input"
+                id="weight"
+                value={weight}
+                onChange={handleChange}
+              />
+              <p className="err-text">{err}</p>
+              <p className="err-text">
+                {mongoErr?.weekly_weight?.errors?.weight?.message}
+              </p>
+            </div>
+          ) : null}
           {/* .................buttons................... */}
           <div className="flex justify-between">
-            <button
-              type="button"
-              className="btn-submit"
-              onClick={(e) => getObject(`/animals/${department}/${target.value}`,"PUT",updateObject)}
-            >
-              SUBMIT
-            </button>
+            {err === "" ? (
+              <button
+                type="button"
+                className="btn-submit"
+                onClick={(e) => {
+                  getObject(
+                    `/animals/${department}/${target.value}`,
+                    "PUT",
+                    updateObject
+                  );
+                  status===200
+                    ? setOpen(false)
+                    : setMongoErr(undefined);
+                }}
+              >
+                SUBMIT
+              </button>
+            ) : null}
             <button
               type="button"
               className="rounded-lg bg-red-400 w-20 p-2"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                handleClose();
+                setMongoErr(undefined);
+              }}
             >
               Close
             </button>

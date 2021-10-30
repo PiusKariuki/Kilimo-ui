@@ -3,7 +3,7 @@ import DataTable, { createTheme } from "react-data-table-component";
 import useFetch from "../../../Common/hooks/useFetch";
 import { useSelector } from "react-redux";
 import useTable from "../../../Common/hooks/useTable";
-import useAnimals from "../hooks/useAnimals";
+import { columns } from "../shared/shared";
 import UpdateDialog from "../components/UpdateDialog";
 
 interface Props {
@@ -12,15 +12,11 @@ interface Props {
   color: "light" | "dark";
 }
 
-createTheme("dark", {
-  font: {
-    fontWeight: "bold",
-    fontSize: "5rem",
-  },
+createTheme("light", {
   text: {
-    fontWeight: "bold",
-    primary: "inherit",
-    secondary: "inherit",
+    fontSize: "2rem",
+    fontWeight: "2px",
+    primary: "#000000",
   },
   background: {
     default: "inherit",
@@ -28,9 +24,15 @@ createTheme("dark", {
 });
 
 const customStyles = {
+  cells: {
+    style: {
+      minHeight: "72px",
+    },
+  },
   headCells: {
     style: {
       fontSize: "1.2rem",
+      // background: "white",
     },
   },
 };
@@ -38,7 +40,6 @@ const customStyles = {
 const Animals: React.FC<{ department: Props["dept"] }> = () => {
   /*........................ hook calls......................*/
   const { data, getObject } = useFetch();
-  const { columns } = useAnimals();
   const { populate, target, open, setOpen } = useTable();
 
   const department = useSelector<any>((state) => state?.User?.department);
@@ -49,9 +50,9 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
   ...............................................................................................*/
   const actions: Props["actions"] =
     department === "dairies"
-      ? ["Milk", "Weight"]
+      ? ["Milk", "weight"]
       : department === "layers"
-      ? ["Eggs", "Weight"]
+      ? ["Eggs", "weight"]
       : ["weight"];
   /*..............................................................................................
                     -Fetch function.
@@ -59,14 +60,14 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
   ................................................................................................*/
   useEffect(() => {
     getObject(`/animals/${department}`, "GET", {});
-  }, [department, getObject]);
+  }, []);
   /*..............................................................................................
                       -Adds action buttons and handlers to the table dynamically
                       -calls the common populate fn in useTable
   ................................................................................................*/
   useEffect(() => {
     populate(data, actions);
-  }, [data, populate]);
+  }, []);
   /*..............................datatable columns and rows.....*/
 
   return (
@@ -77,7 +78,7 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
         setOpen={setOpen}
         target={target}
       />
-      <div className="mx-12">
+      <div className="mx-24">
         <DataTable
           columns={columns}
           customStyles={customStyles}
@@ -85,11 +86,12 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
           pagination
           responsive
           title="Animals"
-          theme="dark"
+          theme="light"
           fixedHeader
           fixedHeaderScrollHeight="450px"
           actions="Refresh"
           pointerOnHover
+          className="bg text-color"
         />
       </div>
     </div>

@@ -2,26 +2,37 @@ import React, { useState } from "react";
 
 const useAnimals = () => {
   const [weight, setWeight] = useState("");
-  const [history, setHistory] = useState("");
   const [eggs, setEggs] = useState("");
   const [milk, setMilk] = useState("");
+  const [op, setOp] = useState("");
+  const [err, setErr] = useState("");
 
+  /*...........................validate form fields on change.......................*/
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.currentTarget.id) {
       case "weight": {
+        /^\d+$/.test(e.target.value)
+          ? setErr("")
+          : setErr("weight has to be a number");
         setWeight(e.target.value);
-        break;
-      }
-      case "history": {
-        setHistory(e.target.value);
+        setOp("weight");
+
         break;
       }
       case "milk": {
         setMilk(e.target.value);
+        setOp("milk");
+        typeof e.target.value !== "number"
+          ? setErr("milk has to be number")
+          : setErr("");
         break;
       }
       case "eggs": {
         setEggs(e.target.value);
+        setOp("eggs");
+        typeof e.target.value !== "number"
+          ? setErr("eggs has to be number")
+          : setErr("");
         break;
       }
       default:
@@ -29,34 +40,21 @@ const useAnimals = () => {
     }
   };
 
-  const columns = [
-    {
-      name: "NAME",
-      selector: (row: any) => row.name,
-    },
-    {
-      name: "AGE  (Weeks)",
-      selector: (row: any) => row.age_in_weeks,
-    },
-    {
-      name: "BREED",
-      selector: (row: any) => row.breed,
-    },
-    {
-      name: "ACTIONS",
-      selector: (row: any) => row.actions,
-      field: "actions",
-    },
-  ];
-
-  const updateObject = {
-    weekly_weight: [{weight}],
-    history,
-    milk_daily: [{litres: milk}],
-    eggs_weekly: eggs,
+  const handleClose = () => {
+    setWeight("");
+    setEggs("");
+    setMilk("");
+    setErr("");
   };
 
-  return { columns,updateObject,handleChange };
+  const updateObject = {
+    weekly_weight: { weight },
+    milk_daily: { litres: milk },
+    eggs_weekly: { number: eggs },
+    op,
+  };
+
+  return { updateObject, handleChange, handleClose, weight, eggs, milk, err };
 };
 
 export default useAnimals;
