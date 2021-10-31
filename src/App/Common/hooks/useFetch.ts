@@ -9,19 +9,28 @@ interface Props {
 
 interface MongoErr {
   weekly_weight:
-    | {
+     {
         errors: {
           weight: { message: string };
         };
       }
     | any;
-  eggs: {};
+  eggs_weekly: {
+    errors: {
+      number: { message: string };
+    }
+  } | any;
+
+  milk_daily: { 
+    errors: { message: string };
+  } |any;
+
 }
 
 const useFetch = () => {
   const [data, setData] = useState<[{}]>([{}]);
   const [mongoErr, setMongoErr] = useState<MongoErr>();
-  const [status, setStatus] = useState<number>();
+  const [status, setStatus] = useState<number>(0);
 
   const getObject: Function = (
     route: string,
@@ -34,7 +43,6 @@ const useFetch = () => {
           .then(
             (res) => {
               setData(res.data);
-              setMongoErr(undefined);
             },
             (err) => setMongoErr(err?.response?.message)
           )
@@ -45,6 +53,7 @@ const useFetch = () => {
           .put(route, info)
           .then(
             (res) => {
+              setMongoErr(undefined);
               setStatus(res.status);
             },
             (err) => {

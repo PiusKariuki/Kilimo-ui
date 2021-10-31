@@ -6,9 +6,11 @@ const useAnimals = () => {
   const [milk, setMilk] = useState("");
   const [op, setOp] = useState("");
   const [err, setErr] = useState("");
-
   /*...........................validate form fields on change.......................*/
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    the regex makes sure the string  is made of digits only
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
     switch (e.currentTarget.id) {
       case "weight": {
         /^\d+$/.test(e.target.value)
@@ -20,19 +22,20 @@ const useAnimals = () => {
         break;
       }
       case "milk": {
+        /^\d+$/.test(e.target.value)
+          ? setErr("")
+          : setErr("milk in litres has to be a number");
         setMilk(e.target.value);
         setOp("milk");
-        typeof e.target.value !== "number"
-          ? setErr("milk has to be number")
-          : setErr("");
         break;
       }
       case "eggs": {
+        /^\d+$/.test(e.target.value)
+          ? setErr("")
+          : setErr("Egg Count has to be a number");
         setEggs(e.target.value);
         setOp("eggs");
-        typeof e.target.value !== "number"
-          ? setErr("eggs has to be number")
-          : setErr("");
+
         break;
       }
       default:
@@ -54,7 +57,16 @@ const useAnimals = () => {
     op,
   };
 
-  return { updateObject, handleChange, handleClose, weight, eggs, milk, err };
+  return {
+    updateObject,
+    handleChange,
+    handleClose,
+    weight,
+    eggs,
+    milk,
+    err,
+    setErr,
+  };
 };
 
 export default useAnimals;
