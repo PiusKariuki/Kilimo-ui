@@ -6,18 +6,16 @@ const taskTxt = [
   "View your tasks of the day",
   "Get your instructions at dawn",
   "View only what is relevant to you",
-  "Check off those tasks that you've completed",
   "Get broadcast information"
 ];
 const animalTxt = [
   "Quick animal identification",
   "Record animal weight",
   "Update weekly egg  count for each bird",
-  "Update daily milk yild for each animal",
+  "Update daily milk yield for each animal",
 ];
 const chatTXT = [
   "Deliver urgent information to vets and managers",
-  "Keep in touch with the foreman",
   "Worry less about the manager not picking your calls when a bull has ECF",
   "Give your feedback and suggestions to the management. Complements and critism...all welcome",
 ];
@@ -44,10 +42,12 @@ const Dashboard = () => {
           <div className="flex justify-start">
             <button className="action-btn ">Get started</button>
           </div>
+
         </div>
         <div className="flex  sm:mx-12 lg:mx-auto  shadow-lg max-w-lg rounded-2xl">
           <img src={chicken} alt=""  className="object-cover rounded-2xl shadow-lg"/>
         </div>
+
       </div>
 
       {/* ...................cards................ */}

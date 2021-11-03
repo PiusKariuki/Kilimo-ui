@@ -27,12 +27,14 @@ const customStyles = {
   cells: {
     style: {
       minHeight: "72px",
+      fontSize: "1rem",
+      fontWeight: "500",
     },
   },
   headCells: {
     style: {
-      fontSize: "1.2rem",
-      // background: "white",
+      fontSize: "1.5rem",
+      fontWeight: "600",
     },
   },
 };
@@ -67,7 +69,7 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
   ................................................................................................*/
   useEffect(() => {
     populate(data, actions);
-  }, []);
+  }, [open]);
   /*..............................datatable columns and rows.....*/
 
   return (
@@ -89,7 +91,6 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
           theme="light"
           fixedHeader
           fixedHeaderScrollHeight="450px"
-          actions="Refresh"
           pointerOnHover
           className="bg text-color"
         />

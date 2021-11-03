@@ -25,14 +25,19 @@ const Cards: React.FC<{
       ></div>
       <div
         className="flex flex-col justify-between xs:w-44 self-center w-80  md:h-80 md:w-2/4 
-         md:-ml-16 md:pl-8 border rounded-md  px-1 shadow-2xl  bg"
+         md:-ml-16 md:pl-8 border rounded-md  px-1 shadow-2xl  bg py-8"
       >
         {text.map((txt, key) => (
           <p key={key} className="font-semibold  text-color">
             *{txt}
           </p>
         ))}
-        <button className=" route-btn py-2 my-6" onClick={()=>history.push(route)}>Proceed</button>
+        <button
+          className=" action-btn w-20 py-2 mx-20 mt-6 md:mb-2"
+          onClick={() => history.push(route)}
+        >
+          Proceed
+        </button>
       </div>
     </div>
   );

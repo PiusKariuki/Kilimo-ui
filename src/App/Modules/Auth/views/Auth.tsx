@@ -1,35 +1,31 @@
 import React from "react";
 import SignUp from "../components/SignUp";
 
-const iconPath = process.env.PUBLIC_URL + "/img/";
+const rooster = `${process.env.PUBLIC_URL}/img/rooster.png`;
 
 const Auth: React.FC = (): JSX.Element => {
   return (
-    <div
-      className="flex flex-col h-screen  md:w-full   bg-no-repeat bg-cover bg-center"
-      style={{
-        background: `url('${process.env.PUBLIC_URL}/img/wheat.jpg')`,
-      }}
-    >
-      {/* ....................................content div................................... */}
-      {/* ..........logo div.............. */}
-      <div className="grid justify-items-center mb-20 mt-4">
-        <img
-          className="fill-current w-10 h-10 "
-          src={`${iconPath}logo.svg`}
-          alt="logo"
-        />
-      </div>
-      {/* ...........heading div... */}
-      <div className="mx-0 mb-12">
-        <h1 className="leading-2 text-center text-3xl font-extrabold">
+    <div className="flex flex-col h-screen  md:w-full relative overflow-hidden">
+      <div
+        className="absolute bg-cover  w-screen h-screen bg-no-repeat bg-center"
+        style={{
+          background: `url('${process.env.PUBLIC_URL}/img/grassy.jpg')`,
+        }}
+      ></div>
+           <div className="absolute  left-50 -top-44 backdrop-filter-none">
+          <img src={rooster} alt="" className="object-cover" />
+        </div>
+
+      <div
+        className="flex flex-col w-full md:w-2/4  h-screen  z-40 bg-gray-200
+       bg-opacity-80"
+      >
+        <h1 className="leading-2 text-center text-3xl font-extrabold mt-28">
           Kilimo Farm Management System
         </h1>
-      </div>
-
-      {/* ..............sign up forms..................... */}
-      <div className="sm:mx-80 bg-gray-200 rounded-3xl">
         <SignUp />
+
+   
       </div>
     </div>
   );

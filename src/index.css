@@ -29,7 +29,6 @@
   }
 
   /* .............................borders.......................... */
-
   .borders {
     @apply border-gray-200 dark:border-gray-900;
   }
@@ -45,12 +44,22 @@
   .icon {
     @apply h-8;
   }
-  /* ..................................datatabe................................... */
+  /* ..................................datatable rows................................... */
   .fQfBPh {
-    @apply text-gray-900 dark:text-gray-300;
+    @apply text-gray-900 dark:text-gray-200  font-bold  text-lg text-opacity-100;
   }
 
+  /* ...............................datatable header............................................... */
   .guIQRM{
-      @apply bg-white dark:bg-gray-500;
+      @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
   }
+  /* ............................datatable footer......................................... */
+  .gyWNLn{
+    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+  }
+  /* .................................datatable title....................................... */
+  .hmmucc{
+    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+  }
+  
 }
