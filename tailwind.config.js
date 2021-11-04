@@ -21,10 +21,15 @@ module.exports = {
       fontFamily: {
         sans: ['"Zen Kurenaido"', "sans-serif"],
       },
+      inset: {
+        46: "46%",
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      visibility: ["group-hover"],
+    },
   },
   plugins: [],
   important: true,

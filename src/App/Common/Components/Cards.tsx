@@ -25,7 +25,7 @@ const Cards: React.FC<{
       ></div>
       <div
         className="flex flex-col justify-between xs:w-44 self-center w-80  md:h-80 md:w-2/4 
-         md:-ml-16 md:pl-8 border rounded-md  px-1 shadow-2xl  bg py-8"
+         md:-ml-16 md:pl-8 border rounded-md  px-1 shadow-2xl  bg-cards py-8"
       >
         {text.map((txt, key) => (
           <p key={key} className="font-semibold  text-color">

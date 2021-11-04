@@ -80,7 +80,7 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
         setOpen={setOpen}
         target={target}
       />
-      <div className="mx-24">
+      <div className="md:mx-24">
         <DataTable
           columns={columns}
           customStyles={customStyles}
@@ -90,7 +90,7 @@ const Animals: React.FC<{ department: Props["dept"] }> = () => {
           title="Animals"
           theme="light"
           fixedHeader
-          fixedHeaderScrollHeight="450px"
+          fixedHeaderScrollHeight="500px"
           pointerOnHover
           className="bg text-color"
         />

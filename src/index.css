@@ -5,7 +5,8 @@
 @layer components {
   /* ...........................buttons.......................... */
   .btn-submit {
-    @apply rounded-lg bg-blue-400 text-white w-20 p-2 focus:bg-pink-900;
+    @apply rounded-lg bg-purple-600 text-white text-lg max-w-lg p-2 hover:bg-rose-500 
+    focus:bg-pink-900;
   }
   .route-btn {
     @apply rounded-lg bg-amber-400 text-white w-20 mx-3 focus:bg-amber-700;
@@ -15,7 +16,8 @@
   }
   /* ..........................inputs............................ */
   .signup-input {
-    @apply border-2 rounded-lg shadow outline-none w-2/3 px-1 py-1 focus:ring focus:border-blue-300;
+    @apply border-2 rounded-lg outline-none w-2/4 px-1 py-1 
+    focus:ring-purple-900 focus:ring-2  bg-white;
   }
   .input {
     @apply md:w-96 ring-2 ring-black ring-inset px-3 rounded-lg h-10;
@@ -35,10 +37,10 @@
 
   /* ..............................backgrounds...................... */
   .bg {
-    @apply bg-white dark:bg-gray-600;
+    @apply bg-white dark:bg-gray-900;
   }
   .bg-cards {
-    @apply bg-white dark:bg-gray-500;
+    @apply bg-white dark:bg-gray-600;
   }
   /* ................................icons and images............................. */
   .icon {
@@ -50,16 +52,15 @@
   }
 
   /* ...............................datatable header............................................... */
-  .guIQRM{
-      @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
+  .guIQRM {
+    @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
   }
   /* ............................datatable footer......................................... */
-  .gyWNLn{
+  .gyWNLn {
     @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
   }
   /* .................................datatable title....................................... */
-  .hmmucc{
+  .hmmucc {
     @apply bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-200;
   }
-  
 }
